@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mi portafolio web</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="scene">
+    <div class="door"></div>
+    <div class="dino"></div>
+    <div class="montanas"></div>
+    <div class="cactus-fondo"></div>
+    <div class="suelo"></div>
+  </div>
+
+  <div class="nube-container">
+  <!-- NUBE 1: ¿Quién soy? -->
+  <button class="nube-btn" onclick="irA('quien-soy')"
+    onmousedown="this.children[0].src='images/nube-quien-dark.png'"
+    onmouseup="this.children[0].src='images/nube-quien.png'"
+    onmouseleave="this.children[0].src='images/nube-quien.png'">
+    <img src="images/nube-quien.png" alt="¿Quién soy?" />
+  </button>
+
+  <!-- NUBE 2: Mis trabajos -->
+  <button class="nube-btn" onclick="irA('trabajos')"
+    onmousedown="this.children[0].src='images/nube-trabajos-dark.png'"
+    onmouseup="this.children[0].src='images/nube-trabajos.png'"
+    onmouseleave="this.children[0].src='images/nube-trabajos.png'">
+    <img src="images/nube-trabajos.png" alt="Mis trabajos" />
+  </button>
+
+  <!-- NUBE 3: Información de contacto -->
+  <button class="nube-btn" onclick="irA('contacto')"
+    onmousedown="this.children[0].src='images/nube-contacto-dark.png'"
+    onmouseup="this.children[0].src='images/nube-contacto.png'"
+    onmouseleave="this.children[0].src='images/nube-contacto.png'">
+    <img src="images/nube-contacto.png" alt="Información de contacto" />
+  </button>
+</div>
+
+</div>
+<script>
+  function irA(seccion) {
+  const dino = document.querySelector('.dino');
+  const puerta = document.querySelector('.door');
+
+  // Reiniciar animación del dinosaurio
+  dino.classList.remove('caminar');
+  void dino.offsetWidth; // reinicia la animación
+  dino.classList.add('caminar');
+
+  // Reiniciar animación de la puerta
+  puerta.classList.remove('abrir');
+  void puerta.offsetWidth; // reinicia la animación
+  puerta.classList.add('abrir');
+
+  // Ya no hay alert()
+}
+</script>
+</body>
+</html>

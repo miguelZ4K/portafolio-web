@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  background: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.door {
+  position: absolute;
+  bottom: 0; 
+  right: 30px;
+  width: 180px;
+  height: 240px;
+  background-image: url('../images/puerta-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.door.abrir {
+  animation: abrirCerrarPuerta 5s linear forwards;
+}
+
+.dino {
+  width: 150px;
+  height: 150px;
+  background-image: url('../images/dino-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 80px;
+  left: -150px;
+  z-index: 2;
+}
+
+.dino.caminar {
+  animation: caminar 0.5s steps(1) infinite, moverDino 5s linear forwards;
+}
+
+.suelo {
+  position: absolute;
+  bottom: 116px;
+  left: 0;
+  width: 200%;
+  height: 200px; /* Ajusta si es necesario */
+  background-image: url('../images/suelo.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 0;
+}
+
+.nube-container {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  z-index: 3;
+}
+
+.nube-container button:nth-child(1) img {
+  animation-delay: 0s;
+}
+
+.nube-container button:nth-child(2) img {
+  animation-delay: 1s;
+}
+
+.nube-container button:nth-child(3) img {
+  animation-delay: 2s;
+}
+  
+
+.nube-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nube-btn img {
+  width: 300px;
+  transition: 0.1s ease;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.montanas {
+  position: absolute;
+  bottom: 136px; /* justo encima del suelo */
+  left: 0;
+  width: 100%;
+  height: 120%; /* ajusta según el tamaño real */
+  background-image: url('../images/montanas.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 0; /* por debajo de las nubes, dino y puerta */
+}
+
+.cactus-fondo {
+  position: absolute;
+  bottom: 80px; /* justo encima del suelo */
+  left: 0;
+  width: 120%;
+  height: 200px; /* ajusta según el tamaño real de tus cactus */
+  background-image: url('../images/cactus.png');
+  background-repeat: repeat-x;
+  background-size: contain; /* o "cover" si quieres que llene todo */
+  z-index: 1;
+  pointer-events: none; /* por si acaso, que no bloquee clics */
+}
+
+
+@keyframes caminar {
+  0%   { background-image: url('../images/dino-1.png'); }
+  33%  { background-image: url('../images/dino-2.png'); }
+  66%  { background-image: url('../images/dino-3.png'); }
+  100% { background-image: url('../images/dino-1.png'); }
+}
+
+@keyframes moverDino {
+  0% {
+    left: -150px;
+    opacity: 1;
+  }
+  70% {
+    left: calc(100% - 200px); /* frente a la puerta */
+    opacity: 1;
+  }
+  85% {
+    left: calc(100% - 140px); /* casi entrando */
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 120px); /* dentro justo */
+    opacity: 0;
+  }
+}
+
+@keyframes abrirCerrarPuerta {
+  0%   { background-image: url('../images/puerta-1.png'); }
+  70%  { background-image: url('../images/puerta-1.png'); }
+  72%  { background-image: url('../images/puerta-2.png'); }
+  90%  { background-image: url('../images/puerta-2.png'); }
+  100% { background-image: url('../images/puerta-1.png'); }
+}
+
+@keyframes flotar {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
