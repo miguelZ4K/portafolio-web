@@ -1,0 +1,28 @@
+ body {
+      margin: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .pc-container {
+      position: relative;
+      width: 1600px; /* Tamaño grande que mencionaste */
+    }
+
+    .pc-image {
+      width: 100%;
+      display: block;
+    }
+
+    .video-frame {
+      position: absolute;
+      top: 115px;     /* Ajustado para la imagen grande */
+      left: 550px;    /* Ajustado para centrarlo en la pantalla */
+      width: 500px;   /* Proporcional al área blanca */
+      height: 330px;  /* Relación 16:9 ajustada al marco */
+      border: none;
+      border-radius: 2px;
+    }

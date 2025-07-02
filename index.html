@@ -26,11 +26,11 @@
   </button>
 
   <!-- NUBE 2: Mis trabajos -->
-  <button class="nube-btn" onclick="irA('trabajos')"
-    onmousedown="this.children[0].src='images/nube-trabajos-dark.png'"
-    onmouseup="this.children[0].src='images/nube-trabajos.png'"
-    onmouseleave="this.children[0].src='images/nube-trabajos.png'">
-    <img src="images/nube-trabajos.png" alt="Mis trabajos" />
+  <button class="nube-btn" onclick="animarDinoYRedirigir('trabajos.html')"
+  onmousedown="this.children[0].src='images/nube-trabajos-dark.png'"
+  onmouseup="this.children[0].src='images/nube-trabajos.png'"
+  onmouseleave="this.children[0].src='images/nube-trabajos.png'">
+  <img src="images/nube-trabajos.png" alt="Mis trabajos" />
   </button>
 
   <!-- NUBE 3: Información de contacto -->
@@ -43,23 +43,28 @@
 </div>
 
 </div>
-<script>
-  function irA(seccion) {
-  const dino = document.querySelector('.dino');
-  const puerta = document.querySelector('.door');
+ <script>
+    function animarDinoYRedirigir(url) {
+      const dino = document.querySelector('.dino');
+      const puerta = document.querySelector('.door');
 
-  // Reiniciar animación del dinosaurio
-  dino.classList.remove('caminar');
-  void dino.offsetWidth; // reinicia la animación
-  dino.classList.add('caminar');
+      // Reiniciar animaciones
+      dino.style.animation = 'none';
+      puerta.style.animation = 'none';
 
-  // Reiniciar animación de la puerta
-  puerta.classList.remove('abrir');
-  void puerta.offsetWidth; // reinicia la animación
-  puerta.classList.add('abrir');
+      // Forzar reflujo para reiniciar animación
+      void dino.offsetWidth;
+      void puerta.offsetWidth;
 
-  // Ya no hay alert()
-}
-</script>
+      // Reaplicar animaciones
+      dino.style.animation = 'caminar 0.5s steps(1) infinite, moverDino 5s linear forwards';
+      puerta.style.animation = 'abrirCerrarPuerta 5s linear forwards';
+
+      // Redireccionar al terminar animación (5 segundos)
+      setTimeout(() => {
+        window.location.href = url;
+      }, 5000);
+    }
+  </script>
 </body>
 </html>
