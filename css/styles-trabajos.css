@@ -26,3 +26,25 @@
       border: none;
       border-radius: 2px;
     }
+
+    .cuadro-texto-img {
+  width: 400px;   /* o el tamaño visual que quieras */
+  height: auto;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  top: 100px;     /* ajusta según tu diseño */
+  left: 100px;    /* ajusta para colocarlo al lado de la PC */
+  z-index: 2;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.flotando {
+  animation: flotar 4s ease-in-out infinite;
+}
+
