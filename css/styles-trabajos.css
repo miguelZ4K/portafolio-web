@@ -27,6 +27,20 @@
       border-radius: 2px;
     }
 
+    .home-button {
+  position: fixed;
+  top: 15px;       /* Ajusta la distancia desde arriba */
+  left: 15px;      /* Ajusta la distancia desde la izquierda */
+  width: 100px;     /* Tamaño del ícono */
+  z-index: 100;    /* Que quede por encima de todo */
+  transition: transform 0.3s ease;
+}
+
+.home-button:hover {
+  transform: scale(1.1); /* Pequeño efecto al pasar el mouse */
+}
+
+
   .sol {
   position: absolute;
   top: 65px;       /* Ajusta según necesites */
@@ -58,4 +72,35 @@
 .flotando {
   animation: flotar 4s ease-in-out infinite;
 }
+
+
+.cielo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* Al fondo */
+  pointer-events: none; /* Que no bloquee clics */
+}
+
+.nubes {
+  position: absolute;
+  top: 50px; /* Altura inicial */
+  left: 100%;
+  width: 800px; /* Ajusta el tamaño como quieras */
+  animation: nubesMover 60s linear infinite;
+  opacity: 0.5; /* Opcional, para que se vean más suaves */
+}
+
+@keyframes nubesMover {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -800px; /* Sale por la izquierda */
+  }
+}
+
 
