@@ -27,6 +27,17 @@
       border-radius: 2px;
     }
 
+  .sol {
+  position: absolute;
+  top: 65px;       /* Ajusta según necesites */
+  right: 90px;     /* Ajusta la distancia desde el lado derecho */
+  width: 200px;     /* Tamaño del sol */
+  animation: flotando 3s ease-in-out infinite;
+  z-index: 10;      /* Asegura que esté sobre otros elementos si es necesario */
+}
+
+
+
     .cuadro-texto-img {
   width: 400px;   /* o el tamaño visual que quieras */
   height: auto;
