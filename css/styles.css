@@ -179,16 +179,28 @@ img {
   100% { transform: translateY(0); }
 }
 
+/* 🧭 Oculta todo excepto el mensaje si el dispositivo está en vertical */
 @media screen and (orientation: portrait) {
   body {
-    display: none;
+    overflow: hidden;
+  }
+
+  .scene,
+  .nube-container,
+  .door,
+  .dino,
+  .suelo,
+  .montanas,
+  .cactus-fondo {
+    display: none !important;
   }
 
   .rotate-message {
-    display: flex;
+    display: flex !important;
   }
 }
 
+/* 🎯 Por defecto el mensaje está oculto */
 .rotate-message {
   display: none;
   position: fixed;
@@ -204,4 +216,33 @@ img {
   align-items: center;
   text-align: center;
   padding: 20px;
+}
+
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .nube-btn img {
+    width: 25vw;
+  }
+
+  .nube-container {
+    top: 20px;
+    gap: 15px;
+  }
+
+  .dino, .door {
+    width: 100px;
+    height: 100px;
+  }
+
+  .suelo {
+    height: 100px;
+  }
+
+  .cactus-fondo {
+    height: 100px;
+  }
+
+  .montanas {
+    height: 80%;
+  }
 }
