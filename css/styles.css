@@ -1,82 +1,91 @@
-body {
+/* RESET BÁSICO */
+body, html {
   margin: 0;
-  background: white;
+  padding: 0;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background: white;
 }
 
+/* ESCENA PRINCIPAL */
 .scene {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+/* ELEMENTOS CON TAMAÑOS RELATIVOS */
+.dino {
+  width: 15vw;
+  height: 4vw;
+  background-image: url('../images/dino-1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 11vh;
+  left: -12vw;
+ z-index: 1;
+}
+
 .door {
   position: absolute;
-  bottom: 0; 
-  right: 30px;
-  width: 180px;
-  height: 240px;
+  bottom: -28vh;
+  right: 1vw;
+  width: 10vw;
+  height: 24vw;
   background-image: url('../images/puerta-1.png');
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
-.door.abrir {
-  animation: abrirCerrarPuerta 5s linear forwards;
-}
-
-.dino {
-  width: 150px;
-  height: 150px;
-  background-image: url('../images/dino-1.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  bottom: 80px;
-  left: -150px;
-  z-index: 2;
-}
-
-.dino.caminar {
-  animation: caminar 0.5s steps(1) infinite, moverDino 5s linear forwards;
-}
-
 .suelo {
   position: absolute;
-  bottom: 116px;
+  bottom: 10vh;
   left: 0;
   width: 200%;
-  height: 200px; /* Ajusta si es necesario */
+  height: 15vh;
   background-image: url('../images/suelo.png');
   background-repeat: repeat-x;
   background-size: contain;
   z-index: 0;
 }
 
+.montanas {
+  position: absolute;
+  bottom: 12vh;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-image: url('../images/montanas.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 0;
+}
+
+.cactus-fondo {
+  position: absolute;
+  bottom: 10vh;
+  left: 0;
+  width: 120%;
+  height: 10vh;
+  background-image: url('../images/cactus.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 1;
+}
+
+/* NUBES RESPONSIVAS */
 .nube-container {
   position: absolute;
-  top: 40px;
+  top: 5vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 40px;
+  gap: 2vw;
   z-index: 3;
 }
-
-.nube-container button:nth-child(1) img {
-  animation-delay: 0s;
-}
-
-.nube-container button:nth-child(2) img {
-  animation-delay: 1s;
-}
-
-.nube-container button:nth-child(3) img {
-  animation-delay: 2s;
-}
-  
 
 .nube-btn {
   background: none;
@@ -86,59 +95,12 @@ body {
 }
 
 .nube-btn img {
-  width: 300px;
+  width: 25vw;
   transition: 0.1s ease;
   animation: flotar 4s ease-in-out infinite;
 }
 
-.montanas {
-  position: absolute;
-  bottom: 136px; /* justo encima del suelo */
-  left: 0;
-  width: 100%;
-  height: 120%; /* ajusta según el tamaño real */
-  background-image: url('../images/montanas.png');
-  background-repeat: repeat-x;
-  background-size: contain;
-  z-index: 0; /* por debajo de las nubes, dino y puerta */
-}
-
-.cactus-fondo {
-  position: absolute;
-  bottom: 80px; /* justo encima del suelo */
-  left: 0;
-  width: 120%;
-  height: 200px; /* ajusta según el tamaño real de tus cactus */
-  background-image: url('../images/cactus.png');
-  background-repeat: repeat-x;
-  background-size: contain; /* o "cover" si quieres que llene todo */
-  z-index: 1;
-  pointer-events: none; /* por si acaso, que no bloquee clics */
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-.home-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
+/* ANIMACIONES ADAPTABLES */
 @keyframes caminar {
   0%   { background-image: url('../images/dino-1.png'); }
   33%  { background-image: url('../images/dino-2.png'); }
@@ -147,22 +109,10 @@ img {
 }
 
 @keyframes moverDino {
-  0% {
-    left: -150px;
-    opacity: 1;
-  }
-  70% {
-    left: calc(100% - 200px); /* frente a la puerta */
-    opacity: 1;
-  }
-  85% {
-    left: calc(100% - 140px); /* casi entrando */
-    opacity: 1;
-  }
-  100% {
-    left: calc(100% - 120px); /* dentro justo */
-    opacity: 0;
-  }
+  0%   { left: -15vw; opacity: 1; }
+  70%  { left: 80vw; opacity: 1; }
+  85%  { left: 85vw; opacity: 1; }
+  100% { left: 88vw; opacity: 0; }
 }
 
 @keyframes abrirCerrarPuerta {
@@ -174,33 +124,11 @@ img {
 }
 
 @keyframes flotar {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
 }
 
-/* 🧭 Oculta todo excepto el mensaje si el dispositivo está en vertical */
-@media screen and (orientation: portrait) {
-  body {
-    overflow: hidden;
-  }
-
-  .scene,
-  .nube-container,
-  .door,
-  .dino,
-  .suelo,
-  .montanas,
-  .cactus-fondo {
-    display: none !important;
-  }
-
-  .rotate-message {
-    display: flex !important;
-  }
-}
-
-/* 🎯 Por defecto el mensaje está oculto */
+/* MENSAJE DE ROTACIÓN (MÓVIL) */
 .rotate-message {
   display: none;
   position: fixed;
@@ -218,31 +146,38 @@ img {
   padding: 20px;
 }
 
-
+/* MEDIA QUERIES PARA AJUSTES ESPECÍFICOS */
 @media screen and (max-width: 768px) and (orientation: landscape) {
   .nube-btn img {
-    width: 25vw;
+    width: 20vw;
   }
-
   .nube-container {
-    top: 20px;
-    gap: 15px;
+    gap: 1vw;
+    top: 3vh;
   }
+}
 
+@media screen and (max-width: 600px) and (orientation: landscape) {
   .dino, .door {
-    width: 100px;
-    height: 100px;
+    width: 12vw;
+    height: 12vw;
   }
-
-  .suelo {
-    height: 100px;
+  .nube-btn img {
+    width: 18vw;
   }
+}
 
+@media screen and (orientation: portrait) {
+  .scene,
+  .nube-container,
+  .door,
+  .dino,
+  .suelo,
+  .montanas,
   .cactus-fondo {
-    height: 100px;
+    display: none !important;
   }
-
-  .montanas {
-    height: 80%;
+  .rotate-message {
+    display: flex !important;
   }
 }
