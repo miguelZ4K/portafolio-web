@@ -7,17 +7,17 @@
       height: 100vh;
     }
 
-    .pc-container {
+  .pc-container {
       position: relative;
       width: 1600px; /* Tamaño grande que mencionaste */
     }
 
-    .pc-image {
+  .pc-image {
       width: 100%;
       display: block;
     }
 
-    .video-frame {
+  .video-frame {
       position: absolute;
       top: 115px;     /* Ajustado para la imagen grande */
       left: 550px;    /* Ajustado para centrarlo en la pantalla */
@@ -27,13 +27,26 @@
       border-radius: 2px;
     }
 
-    .home-button {
+  .home-button {
   position: fixed;
   top: 15px;       /* Ajusta la distancia desde arriba */
   left: 15px;      /* Ajusta la distancia desde la izquierda */
   width: 100px;     /* Tamaño del ícono */
   z-index: 100;    /* Que quede por encima de todo */
   transition: transform 0.3s ease;
+}
+
+.boton-de-next {
+position: fixed;
+top: 1px;       /* Ajusta la distancia desde arriba */
+left: 90px;      /* Ajusta la distancia desde la izquierda */
+width: 900px;     /* Tamaño del ícono */
+z-index: 100;    /* Que quede por encima de todo */
+transition: transform 0.3s ease;
+}
+
+.boton-de-next:hover {
+  transform: scale(1.01); /* Pequeño efecto al pasar el mouse */
 }
 
 .home-button:hover {
