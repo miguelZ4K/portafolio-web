@@ -1,49 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/trabajosimg.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <title>más de mis trabajos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/trabajosimg.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Más de mis trabajos</title>
 </head>
 <body>
+
+  <section class="trabajos-container">
+
+    <!-- 🦖 Carrusel con dinos -->
+    <div class="carrusel-con-dinos">
+      <div class="dino-lado izquierdo"></div>
+
+      <div class="carousel">
+        <a href="https://www.youtube.com/watch?v=McV3lB9MbrA" target="_blank">
+          <img src="images/la escritora distraida.png" class="carousel-img active" alt="miniatura de la escritora distraida">
+        </a>
+        <a href="https://www.youtube.com/watch?v=5M-cb_SQOKo&t=48s" target="_blank">
+          <img src="images/entrevista.png" class="carousel-img" alt="logo de proyecto entrevista sobre cultura hip hop">
+        </a>
+        <a href="https://www.youtube.com/watch?v=4hdukpJgDmg" target="_blank">
+          <img src="images/sonoviso.png" class="carousel-img" alt="miniatura de sonoviso">
+        </a>
+
+        <button class="carousel-btn prev" onclick="cambiarSlide(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="cambiarSlide(1)">&#10095;</button>
+      </div>
+
+      <div class="dino-lado derecho"></div>
+    </div>
+
+    <!-- 🎴 Cards -->
     <section class="cards-section">
-  <div class="card">
-    <img src="images/guillo-2.jpg" alt="Proyecto 1">
-    <h3>Illustración</h3>
-    <p>Una ilistración que realize de un periquito en illustrator.</p>
-  </div>
+      <div class="card">
+        <img src="images/guillo-2.jpg" alt="Proyecto 1">
+        <h3>Illustración</h3>
+        <p>Una ilustración que realicé de un periquito en Illustrator.</p>
+      </div>
 
-  <div class="card">
-    <img src="images/hermes-1.jpg" alt="Proyecto 2">
-    <h3>Diseño</h3>
-    <p>Un diseño que realize hace tiempo para un programa del colegio.</p>
-  </div>
+      <div class="card">
+        <img src="images/hermes-1.jpg" alt="Proyecto 2">
+        <h3>Diseño</h3>
+        <p>Un diseño que realicé hace tiempo para un programa del colegio.</p>
+      </div>
 
-  <div class="card">
-    <img src="images/monachos.jpg" alt="Proyecto 3">
-    <h3>Diseño</h3>
-    <p>Unos personajes que realize una vez para trabajo del SENA.</p>
-  </div>
+      <div class="card">
+        <img src="images/monachos.jpg" alt="Proyecto 3">
+        <h3>Diseño</h3>
+        <p>Unos personajes que realicé una vez para trabajo del SENA.</p>
+      </div>
 
-  <div class="card">
-    <img src="images/pagina-web-personal.jpg" alt="Proyecto 4">
-    <h3>Diseño</h3>
-    <p>Diseño de pagina web personal.</p>
-  </div>
+      <div class="card">
+        <img src="images/pagina-web-personal.jpg" alt="Proyecto 4">
+        <h3>Diseño</h3>
+        <p>Diseño de página web personal.</p>
+      </div>
 
-  <div class="card">
-    <img src="images/pagina-web.jpg" alt="Proyecto 5">
-    <h3>Diseño</h3>
-    <p>Diseño de pagina web para niños.</p>
-  </div>
+      <div class="card">
+        <img src="images/pagina-web.jpg" alt="Proyecto 5">
+        <h3>Diseño</h3>
+        <p>Diseño de página web para niños.</p>
+      </div>
 
-  <div class="card">
-    <img src="images/Split.JPG" alt="Proyecto 6">
-    <h3></h3>
-    <p>fotografia realizada en el SENA.</p>
-  </div>
-</section>
+      <div class="card">
+        <img src="images/Split.JPG" alt="Proyecto 6">
+        <h3>Fotografía</h3>
+        <p>Fotografía realizada en el SENA.</p>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- 📽️ Script del carrusel -->
+  <script>
+    let slideIndex = 0;
+    const slideLinks = document.querySelectorAll('.carousel a');
+
+    function mostrarSlide(index) {
+      slideLinks.forEach((link, i) => {
+        const img = link.querySelector('img');
+        img.classList.remove('active');
+        link.style.display = 'none';
+        if (i === index) {
+          img.classList.add('active');
+          link.style.display = 'block';
+        }
+      });
+    }
+
+    function cambiarSlide(n) {
+      slideIndex = (slideIndex + n + slideLinks.length) % slideLinks.length;
+      mostrarSlide(slideIndex);
+    }
+
+    mostrarSlide(slideIndex);
+  </script>
+
 </body>
 </html>
+
