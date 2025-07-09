@@ -30,6 +30,7 @@
 
 /* ----- CARRUSEL ----- */
 .carousel {
+  z-index: 5;
   position: relative;
   width: 90%;
   max-width: 700px;
