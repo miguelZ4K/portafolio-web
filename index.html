@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>mi portafolio web</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -16,43 +16,48 @@
     <div class="suelo"></div>
   </div>
 
-<div class="nube-container">
-    <button class="nube-btn" onclick="animarDinoYRedirigir('quien-soy.html')"
+  <div class="nube-container">
+
+    <!-- NUBE 1: ¿quiensoy? -->
+    <button class="nube-btn" onclick="animarDinoYRedirigir('quiensoy.html')"
       onmousedown="this.children[0].src='images/nube-quien-dark.png'"
       onmouseup="this.children[0].src='images/nube-quien.png'"
       onmouseleave="this.children[0].src='images/nube-quien.png'">
       <img src="images/nube-quien.png" alt="¿Quién soy?" />
     </button>
 
+    <!-- NUBE 2: Mis trabajos -->
+    <button class="nube-btn" onclick="animarDinoYRedirigir('trabajos.html')"
+      onmousedown="this.children[0].src='images/nube-trabajos-dark.png'"
+      onmouseup="this.children[0].src='images/nube-trabajos.png'"
+      onmouseleave="this.children[0].src='images/nube-trabajos.png'">
+      <img src="images/nube-trabajos.png" alt="Mis trabajos" />
+    </button>
 
-  <!-- NUBE 2: Mis trabajos -->
-  <button class="nube-btn" onclick="animarDinoYRedirigir('trabajos.html')"
-  onmousedown="this.children[0].src='images/nube-trabajos-dark.png'"
-  onmouseup="this.children[0].src='images/nube-trabajos.png'"
-  onmouseleave="this.children[0].src='images/nube-trabajos.png'">
-  <img src="images/nube-trabajos.png" alt="Mis trabajos" />
-  </button>
+    <!-- NUBE 3: Información de contacto -->
+    <button class="nube-btn" onclick="irA('contacto')"
+      onmousedown="this.children[0].src='images/nube-contacto-dark.png'"
+      onmouseup="this.children[0].src='images/nube-contacto.png'"
+      onmouseleave="this.children[0].src='images/nube-contacto.png'">
+      <img src="images/nube-contacto.png" alt="Información de contacto" />
+    </button>
 
-  <!-- NUBE 3: Información de contacto -->
-  <button class="nube-btn" onclick="irA('contacto')"
-    onmousedown="this.children[0].src='images/nube-contacto-dark.png'"
-    onmouseup="this.children[0].src='images/nube-contacto.png'"
-    onmouseleave="this.children[0].src='images/nube-contacto.png'">
-    <img src="images/nube-contacto.png" alt="Información de contacto" />
-  </button>
-</div>
+  </div><!-- cierra .nube-container correctamente -->
 
-</div>
- <script>
+  <script>
     function animarDinoYRedirigir(url) {
       const dino = document.querySelector('.dino');
       const puerta = document.querySelector('.door');
 
+      // Si falta dino o puerta, vamos directo
+      if (!dino || !puerta) {
+        window.location.href = url;
+        return;
+      }
+
       // Reiniciar animaciones
       dino.style.animation = 'none';
       puerta.style.animation = 'none';
-
-      // Forzar reflujo para reiniciar animación
       void dino.offsetWidth;
       void puerta.offsetWidth;
 
@@ -60,7 +65,7 @@
       dino.style.animation = 'caminar 0.5s steps(1) infinite, moverDino 5s linear forwards';
       puerta.style.animation = 'abrirCerrarPuerta 5s linear forwards';
 
-      // Redireccionar al terminar animación (5 segundos)
+      // Redireccionar tras 5s
       setTimeout(() => {
         window.location.href = url;
       }, 5000);
@@ -70,5 +75,7 @@
   <div class="rotate-message">
     Por favor gira tu dispositivo para una mejor experiencia 🦖🌄
   </div>
+
 </body>
 </html>
+

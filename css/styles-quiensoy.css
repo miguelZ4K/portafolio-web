@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #000011, #000000);
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+}
+
+.contenedor-quien {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh 2vw;
+}
+
+/* 🟡 Luna más grande y detrás de las nubes */
+.luna {
+  position: absolute;
+  top: 25vh;
+  right: 30vw;
+  width: 12vw;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* 🌥️ Nubes más pequeñas y por delante de la luna */
+.nubes {
+  position: absolute;
+  top: 5vh;
+  right: -40vw;
+  width: 30vw;
+  z-index: 2;
+  opacity: 0.8;
+  animation: moverNubes 20s linear infinite;
+}
+
+/* 🌥️ Animación lineal horizontal */
+@keyframes moverNubes {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-180vw); /* Adaptado a ancho relativo */
+  }
+}
+
+.foto-nombre {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.foto-marco {
+  width: 18vw;
+  margin-bottom: 2vh;
+}
+
+.texto-presentacion {
+  max-width: 60vw;
+  color: white;
+  font-size: 1.2vw;
+  line-height: 1.6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 🦖 Dino flotante */
+#dino-flotante {
+  position: absolute;
+  width: 10vw;
+  cursor: grab;
+  z-index: 99;
+  pointer-events: auto;
+  animation: rotar 3s linear infinite;
+}
+
+@keyframes rotar {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ⭐ Estrellas */
+.estrellas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.estrella {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: parpadear 2s infinite ease-in-out alternate;
+}
+
+@keyframes parpadear {
+  0%   { opacity: 0.2; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* 🔲 Logo visible en fondo oscuro */
+.logo {
+  width: 8vw;
+  margin-top: 4vh;
+  z-index: 2;
+  opacity: 0.9;
+  background-color: white;
+  padding: 1vh;
+  border-radius: 1vh;
+}
+
+/* 📱 Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  .texto-presentacion {
+    font-size: 2.5vw;
+  }
+
+  .luna {
+    width: 25vw;
+  }
+
+  .nubes {
+    width: 40vw;
+  }
+
+  .foto-marco {
+    width: 35vw;
+  }
+
+  #dino-flotante {
+    width: 18vw;
+  }
+
+  .logo {
+    width: 20vw;
+  }
+}
+
+.btn-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.btn-home:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+.icono-home {
+  width: 30px;
+  height: 30px;
+  image-rendering: pixelated;
+}
