@@ -17,6 +17,7 @@
 
 /* ----- DINOSAURIOS ----- */
 .dino-lado {
+  z-index: 5;
   width: 500px;
   height: 150px;
   background-image: url('../images/dino-1.png');
@@ -26,6 +27,7 @@
 }
 
 .dino-lado.derecho {
+  z-index: 5;
   transform: scaleX(-1); /* volteado horizontalmente */
 }
 
@@ -223,7 +225,7 @@
   left: -200px;
   width: 100px;
   height: auto;
-  z-index: 1;
+  z-index: 2;
   animation: rodar-realista 8s linear infinite;
   pointer-events: none;
   opacity: 0.8;
@@ -265,5 +267,34 @@
   }
 }
 
+.fondo-desierto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/fondo-desierto.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0; /* Asegúrate que esté detrás de todo */
+}
 
+.home-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  width: 80px; /* ajusta el tamaño si lo ves muy grande o pequeño */
+  transition: transform 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.1);
+}
+
+.home-btn img {
+  width: 100%;
+  display: block;
+}
 
