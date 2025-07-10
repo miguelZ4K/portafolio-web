@@ -181,3 +181,14 @@ body, html {
     display: flex !important;
   }
 }
+
+@keyframes inclinarInverso {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-90deg); }
+}
+
+.icono-rotar {
+  width: 60px;
+  animation: inclinarInverso 1.5s ease-in-out infinite;
+  transform-origin: center center;
+}
