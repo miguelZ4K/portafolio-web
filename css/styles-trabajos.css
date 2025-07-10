@@ -1,119 +1,226 @@
  body {
-      margin: 0;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+            margin: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-  .pc-container {
-      position: relative;
-      width: 1600px; /* Tamaño grande que mencionaste */
-    }
+        .pc-container {
+            position: relative;
+            width: 100%;
+            max-width: 1600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-  .pc-image {
-      width: 100%;
-      display: block;
-    }
+        .pc-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-  .video-frame {
-      position: absolute;
-      top: 115px;     /* Ajustado para la imagen grande */
-      left: 550px;    /* Ajustado para centrarlo en la pantalla */
-      width: 500px;   /* Proporcional al área blanca */
-      height: 330px;  /* Relación 16:9 ajustada al marco */
-      border: none;
-      border-radius: 2px;
-    }
+        .video-frame {
+            position: absolute;
+            /* Usando porcentajes basados en la imagen original */
+            top: 14.2%;     /* 115px de 1600px = 7.2% */
+            left: 34.4%;   /* 550px de 1600px = 34.4% */
+            width: 31.25%; /* 500px de 1600px = 31.25% */
+            height: 35.6%; /* 330px de 1600px = 20.6% */
+            border: none;
+            border-radius: 2px;
+        }
 
-  .home-button {
-  position: fixed;
-  top: 15px;       /* Ajusta la distancia desde arriba */
-  left: 15px;      /* Ajusta la distancia desde la izquierda */
-  width: 100px;     /* Tamaño del ícono */
-  z-index: 100;    /* Que quede por encima de todo */
-  transition: transform 0.3s ease;
-}
+        .home-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
 
-.boton-de-next {
-position: fixed;
-top: 1px;       /* Ajusta la distancia desde arriba */
-left: 90px;      /* Ajusta la distancia desde la izquierda */
-width: 900px;     /* Tamaño del ícono */
-z-index: 100;    /* Que quede por encima de todo */
-transition: transform 0.3s ease;
-}
+        .boton-de-next {
+            position: fixed;
+            top: 1px;
+            left: 90px;
+            width: 200px;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
 
-.boton-de-next:hover {
-  transform: scale(1.01); /* Pequeño efecto al pasar el mouse */
-}
+        .boton-de-next:hover {
+            transform: scale(1.01);
+        }
 
-.home-button:hover {
-  transform: scale(1.1); /* Pequeño efecto al pasar el mouse */
-}
+        .home-button:hover {
+            transform: scale(1.1);
+        }
 
+        .sol {
+            position: absolute;
+            top: 4%;
+            right: 5.6%;
+            width: 12.5%;
+            animation: flotando 3s ease-in-out infinite;
+            z-index: 10;
+        }
 
-  .sol {
-  position: absolute;
-  top: 65px;       /* Ajusta según necesites */
-  right: 90px;     /* Ajusta la distancia desde el lado derecho */
-  width: 200px;     /* Tamaño del sol */
-  animation: flotando 3s ease-in-out infinite;
-  z-index: 10;      /* Asegura que esté sobre otros elementos si es necesario */
-}
+        .cuadro-texto-img {
+            width: 25%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            position: absolute;
+            top: 6.25%;
+            left: 6.25%;
+            z-index: 2;
+        }
 
+        @keyframes flotando {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
 
+        .flotando {
+            animation: flotando 4s ease-in-out infinite;
+        }
 
-    .cuadro-texto-img {
-  width: 400px;   /* o el tamaño visual que quieras */
-  height: auto;
-  object-fit: contain;
-  display: block;
-  position: absolute;
-  top: 100px;     /* ajusta según tu diseño */
-  left: 100px;    /* ajusta para colocarlo al lado de la PC */
-  z-index: 2;
-}
+        .cielo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-@keyframes flotar {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
+        .nubes {
+            position: absolute;
+            top: 50px;
+            left: 100%;
+            width: 800px;
+            animation: nubesMover 60s linear infinite;
+            opacity: 0.5;
+        }
 
-.flotando {
-  animation: flotar 4s ease-in-out infinite;
-}
+        @keyframes nubesMover {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -800px;
+            }
+        }
 
+        /* Media queries para diferentes tamaños de pantalla */
+        @media (max-width: 1200px) {
+            .pc-container {
+                max-width: 1200px;
+            }
+            
+            .home-button {
+                width: 50px;
+            }
+            
+            .boton-de-next {
+                width: 150px;
+                left: 70px;
+            }
+        }
 
-.cielo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1; /* Al fondo */
-  pointer-events: none; /* Que no bloquee clics */
-}
+        @media (max-width: 768px) {
+            .pc-container {
+                padding: 10px;
+                max-width: 100%;
+            }
+            
+            .home-button {
+                width: 40px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .boton-de-next {
+                width: 120px;
+                left: 60px;
+                top: 5px;
+            }
+            
+            .cuadro-texto-img {
+                width: 30%;
+                top: 8%;
+                left: 5%;
+            }
+            
+            .sol {
+                width: 15%;
+                top: 3%;
+                right: 3%;
+            }
+        }
 
-.nubes {
-  position: absolute;
-  top: 50px; /* Altura inicial */
-  left: 100%;
-  width: 800px; /* Ajusta el tamaño como quieras */
-  animation: nubesMover 60s linear infinite;
-  opacity: 0.5; /* Opcional, para que se vean más suaves */
-}
+        @media (max-width: 480px) {
+            body {
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+            
+            .pc-container {
+                padding: 5px;
+            }
+            
+            .home-button {
+                width: 35px;
+                top: 5px;
+                left: 5px;
+            }
+            
+            .boton-de-next {
+                width: 100px;
+                left: 50px;
+                top: 2px;
+            }
+            
+            .cuadro-texto-img {
+                width: 35%;
+                top: 10%;
+                left: 3%;
+            }
+            
+            .sol {
+                width: 18%;
+                top: 2%;
+                right: 2%;
+            }
+            
+            .nubes {
+                width: 600px;
+            }
+        }
 
-@keyframes nubesMover {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: -800px; /* Sale por la izquierda */
-  }
-}
-
-
+        @media (max-width: 320px) {
+            .cuadro-texto-img {
+                width: 40%;
+                top: 12%;
+                left: 2%;
+            }
+            
+            .sol {
+                width: 20%;
+            }
+            
+            .home-button {
+                width: 30px;
+            }
+            
+            .boton-de-next {
+                width: 80px;
+                left: 40px;
+            }
+        }
