@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  <div class="rain-container" id="rainContainer"></div>
+
     <a href="index.html" class="btn-home">
         <img src="images/home.png" alt="Inicio" class="icono-home">
     </a>
@@ -53,6 +55,68 @@
       <div class="footer-text">M.D Productions 2025</div>
     </div>
   </footer>
+  
+<div class="dinos-footer">
+  <img src="images/dino-1.png" alt="Dino izquierda" class="dino dino-left" id="dinoLeft">
+  <img src="images/dino-1.png" alt="Dino derecha" class="dino dino-right" id="dinoRight">
+</div>
 
+  <script>
+  function createRain() {
+  const rainContainer = document.getElementById('rainContainer');
+  const numberOfDrops = 150;
+  
+  for (let i = 0; i < numberOfDrops; i++) {
+    const drop = document.createElement('div');
+    drop.className = 'raindrop';
+    
+    // Posición aleatoria
+    drop.style.left = Math.random() * 100 + '%';
+    
+    // Velocidad aleatoria
+    const duration = Math.random() * 1 + 0.5;
+    drop.style.animationDuration = duration + 's';
+    
+    // Retraso aleatorio
+    drop.style.animationDelay = Math.random() * 2 + 's';
+    
+    // Tamaño aleatorio
+    const size = Math.random() * 3 + 1;
+    drop.style.width = size + 'px';
+    drop.style.height = size * 8 + 'px';
+    
+    rainContainer.appendChild(drop);
+  }
+}
+
+// Inicializar la lluvia cuando se carga la página
+window.addEventListener('load', createRain);
+
+// Recrear gotas cuando termine la animación
+setInterval(() => {
+  const rainContainer = document.getElementById('rainContainer');
+  rainContainer.innerHTML = '';
+  createRain();
+}, 3000);
+
+ const dinoLeft = document.getElementById('dinoLeft');
+  const dinoRight = document.getElementById('dinoRight');
+
+  setTimeout(() => {
+    // Cambiar a imagen de choque
+    dinoLeft.src = "images/dino-3.png";
+    dinoRight.src = "images/dino-3.png";
+
+    // Pequeña pausa para el impacto
+    setTimeout(() => {
+      // Agregar animación de giro
+      dinoLeft.classList.remove('dino-left');
+      dinoRight.classList.remove('dino-right');
+      dinoLeft.classList.add('girar-izquierda');
+      dinoRight.classList.add('girar-derecha');
+    }, 300);
+  }, 2500);
+  </script>
+ 
 </body>
 </html>
