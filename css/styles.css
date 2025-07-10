@@ -1,4 +1,3 @@
-/* RESET BÁSICO */
 body, html {
   margin: 0;
   padding: 0;
@@ -144,6 +143,22 @@ body, html {
   align-items: center;
   text-align: center;
   padding: 20px;
+  flex-direction: column; /* 👈 Apila texto e ícono */
+}
+
+.rotate-message p {
+  margin-bottom: 16px;
+}
+
+@keyframes inclinarInverso {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-90deg); }
+}
+
+.icono-rotar {
+  width: 60px;
+  animation: inclinarInverso 1.5s ease-in-out infinite;
+  transform-origin: center center;
 }
 
 /* MEDIA QUERIES PARA AJUSTES ESPECÍFICOS */
@@ -182,13 +197,3 @@ body, html {
   }
 }
 
-@keyframes inclinarInverso {
-  0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(-90deg); }
-}
-
-.icono-rotar {
-  width: 60px;
-  animation: inclinarInverso 1.5s ease-in-out infinite;
-  transform-origin: center center;
-}
